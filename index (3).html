@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal portfolio of Rakshita Hibare, a third-semester B.Tech Computer Science and Engineering student at REVA University." />
+  <title>Rakshita Hibare | Student Developer</title>
+
+  <style>
+    :root {
+      --bg: #080a12;
+      --bg-soft: #0e1120;
+      --card: rgba(18, 22, 38, 0.82);
+      --text: #f5f7ff;
+      --muted: #a8aec4;
+      --purple: #9b7cff;
+      --blue: #55a7ff;
+      --border: rgba(255, 255, 255, 0.09);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(155, 124, 255, 0.13), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(85, 167, 255, 0.10), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(8, 10, 18, 0.78);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      color: var(--purple);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.92rem;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      place-items: center;
+      padding: 80px 0;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #c9c0ff;
+      background: rgba(155, 124, 255, 0.09);
+      border: 1px solid rgba(155, 124, 255, 0.2);
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: 0.82rem;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--purple);
+      box-shadow: 0 0 14px var(--purple);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+      margin-bottom: 25px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #ffffff 20%, #b9a8ff 55%, #72b9ff 90%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.92rem;
+      font-weight: 650;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(155, 124, 255, 0.5);
+      background: rgba(155, 124, 255, 0.09);
+    }
+
+    .button.primary {
+      border: 0;
+      background: linear-gradient(100deg, var(--purple), var(--blue));
+      color: white;
+    }
+
+    /* Sections */
+    section {
+      padding: 90px 0;
+      scroll-margin-top: 72px;
+    }
+
+    .section-heading {
+      margin-bottom: 32px;
+    }
+
+    .section-label {
+      color: var(--purple);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+    }
+
+    .section-intro {
+      max-width: 680px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(155, 124, 255, 0.25);
+    }
+
+    .about-text {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .details {
+      display: grid;
+      gap: 16px;
+    }
+
+    .detail {
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .detail:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .detail-label {
+      color: var(--muted);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 3px;
+    }
+
+    .detail-value {
+      font-weight: 650;
+    }
+
+    /* Activities */
+    .activities {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .activity-number {
+      color: var(--purple);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+
+    .activity-title {
+      font-size: 1.2rem;
+      margin-bottom: 9px;
+    }
+
+    .activity-description {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .repo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      color: #c9c0ff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .repo-link:hover {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
+    /* Skills */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.035);
+      border-radius: 999px;
+      padding: 9px 14px;
+      color: #dfe3f5;
+      font-size: 0.9rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .skill:hover {
+      transform: translateY(-2px);
+      border-color: rgba(85, 167, 255, 0.45);
+    }
+
+    .goal-card {
+      margin-top: 20px;
+    }
+
+    .goal-card p {
+      color: var(--muted);
+      max-width: 850px;
+    }
+
+    /* Contact */
+    .contact-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .github-link {
+      color: #c9c0ff;
+      word-break: break-word;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 28px, 1100px);
+      }
+
+      .nav-inner {
+        min-height: 64px;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .nav-links a {
+        font-size: 0.8rem;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 90px 0 70px;
+      }
+
+      .about-grid,
+      .activities {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .contact-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .logo {
+        font-size: 0.95rem;
+      }
+
+      .nav-links {
+        gap: 10px;
+      }
+
+      .nav-links li:nth-child(3) {
+        display: none;
+      }
+
+      h1 {
+        font-size: 3.25rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a href="#home" class="logo">Rakshita<span>.</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#activities">Activities</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">3rd Semester · B.Tech CSE</div>
+
+          <h1>
+            Hi, I'm<br />
+            <span class="gradient-text">Rakshita Hibare.</span>
+          </h1>
+
+          <p class="hero-description">
+            A third-semester B.Tech Computer Science and Engineering student
+            interested in programming, problem-solving, web development,
+            databases, and software development tools.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button primary" href="#activities">View Activities</a>
+            <a
+              class="button"
+              href="https://github.com/rakshitahibare1-ship-it"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">01 · About</div>
+          <h2>A little about me.</h2>
+        </div>
+
+        <div class="about-grid">
+          <article class="card">
+            <p class="about-text">
+              I am a third-semester B.Tech Computer Science and Engineering
+              student interested in developing my programming, problem-solving,
+              and software development skills. I am currently learning
+              programming, web development, databases, and software development
+              tools. I also practise programming problems on LeetCode to
+              improve my logical thinking and coding ability.
+            </p>
+          </article>
+
+          <article class="card details">
+            <div class="detail">
+              <div class="detail-label">Name</div>
+              <div class="detail-value">Rakshita Hibare</div>
+            </div>
+
+            <div class="detail">
+              <div class="detail-label">SRN</div>
+              <div class="detail-value">R25EF211</div>
+            </div>
+
+            <div class="detail">
+              <div class="detail-label">Branch</div>
+              <div class="detail-value">B.Tech Computer Science and Engineering</div>
+            </div>
+
+            <div class="detail">
+              <div class="detail-label">University</div>
+              <div class="detail-value">REVA University</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activities -->
+    <section id="activities">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">02 · Projects &amp; Activities</div>
+          <h2>What I've worked on.</h2>
+          <p class="section-intro">
+            A concise record of my current learning and development activities.
+          </p>
+        </div>
+
+        <div class="activities">
+          <article class="card">
+            <div class="activity-number">ACTIVITY 01</div>
+            <h3 class="activity-title">VS Code Setup / Hello World</h3>
+            <p class="activity-description">
+              I completed a basic development environment setup using Visual
+              Studio Code and worked on a Hello World programming activity.
+            </p>
+            <a
+              class="repo-link"
+              href="https://github.com/rakshitahibare1-ship-it/hello-world"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Repository ↗
+            </a>
+          </article>
+
+          <article class="card">
+            <div class="activity-number">ACTIVITY 02</div>
+            <h3 class="activity-title">Git &amp; GitHub Setup</h3>
+            <p class="activity-description">
+              I learned the basics of Git and GitHub and practised repositories,
+              commits, branches, and publishing projects online.
+            </p>
+            <a
+              class="repo-link"
+              href="https://github.com/rakshitahibare1-ship-it/R25EF211"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Repository ↗
+            </a>
+          </article>
+
+          <article class="card">
+            <div class="activity-number">ACTIVITY 03</div>
+            <h3 class="activity-title">GitLens &amp; Live Share</h3>
+            <p class="activity-description">
+              I explored GitLens and Visual Studio Code Live Share and learned
+              about Git-related information and collaborative programming
+              workflows.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="activity-number">ACTIVITY 04</div>
+            <h3 class="activity-title">LeetCode Practice Repository</h3>
+            <p class="activity-description">
+              I created a GitHub repository to document my LeetCode practice
+              and programming progress. Problems practised include Two Sum,
+              Valid Palindrome, Best Time to Buy and Sell Stock, Reverse String,
+              and Contains Duplicate.
+            </p>
+            <a
+              class="repo-link"
+              href="https://github.com/rakshitahibare1-ship-it/leetcode-solutions"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Repository ↗
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">03 · Skills</div>
+          <h2>Tools &amp; technologies.</h2>
+          <p class="section-intro">
+            Technologies and areas I am currently learning and practising.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="skills-wrap">
+            <span class="skill">C</span>
+            <span class="skill">C++</span>
+            <span class="skill">Java</span>
+            <span class="skill">Python</span>
+            <span class="skill">SQL</span>
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">Git</span>
+            <span class="skill">GitHub</span>
+            <span class="skill">Visual Studio Code</span>
+            <span class="skill">GitLens</span>
+            <span class="skill">GitHub Live Share</span>
+            <span class="skill">Problem Solving</span>
+            <span class="skill">LeetCode</span>
+          </div>
+        </div>
+
+        <div class="card goal-card">
+          <div class="section-label">Career Goal</div>
+          <p>
+            My goal is to improve my programming and problem-solving skills,
+            build useful software projects, strengthen my development
+            fundamentals, and prepare for internships and future
+            software-development opportunities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">04 · Contact</div>
+          <h2>Let's connect.</h2>
+        </div>
+
+        <div class="card contact-card">
+          <div>
+            <h3>GitHub</h3>
+            <p>Find my programming practice and development work here.</p>
+          </div>
+
+          <a
+            class="button primary github-link"
+            href="https://github.com/rakshitahibare1-ship-it"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            rakshitahibare1-ship-it ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 Rakshita Hibare</span>
+      <span>R25EF211 · REVA University</span>
+    </div>
+  </footer>
+</body>
+</html>
